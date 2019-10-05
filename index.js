@@ -9,17 +9,17 @@ bot.commands = new Discord.Collection();
 const { CommandHandler } = require("djs-commands");
 const CH = new CommandHandler({
     folder: __dirname + '/commands/',
-    prefix: ['!']
+    prefix: [process.env.prefix]
   });
 
-const token = botconfig.token;
+const token = process.env.token;
 
 bot.login(token);
 
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: botconfig.sqlPass,
+    password: process.env.sqlPass,
     database: "teaparty"
 });
 

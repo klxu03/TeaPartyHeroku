@@ -11,8 +11,6 @@ const con = new Client({
     ssl: true
 });
 
-con.connect();
-
 bot.commands = new Discord.Collection();
 
 const { CommandHandler } = require("djs-commands");

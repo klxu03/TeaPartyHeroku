@@ -1,5 +1,4 @@
 "use strict";
-const botconfig = require("./botconfig.json");
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const mysql = require("mysql");

@@ -1,0 +1,16 @@
+{
+    "name": "discord-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "TheSkillzrReal",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "djs-commands": "^1.2.2",
+        "mysql": "^2.17.1"
+    }
+}

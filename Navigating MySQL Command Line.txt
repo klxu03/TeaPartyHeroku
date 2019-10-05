@@ -1,0 +1,41 @@
+deleted botconfig.json
+
+~o~O~o~
+https://www.youtube.com/watch?v=E5TVwyiCuYA&t=2s
+
+"show databases;" to get a list of databases saved.
+
+"create database {name}; to create a database
+
+"use {database name};" to select a database to be using
+
+"create table {name} ({param 1}, {param 2}...); to create a table within that database
+
+"show tables;" to show all the tables within that database
+
+"select * from {table name};" to grab all the values from that table name, "*" means all basically
+
+~o~O~o~
+http://www.sqlservertutorial.net/sql-server-basics/sql-server-alter-table-add-column/
+ALTER TABLE table_name
+ADD 
+    column_name_1 data_type_1 column_constraint_1,
+    column_name_2 data_type_2 column_constraint_2,
+    ...,
+    column_name_n data_type_n column_constraint_n;
+
+//This adds new columns after currently created ones, in the order you add them
+
+https://www.1keydata.com/sql/alter-table-drop-column.html
+ALTER TABLE "table_name"
+DROP "column_name";
+
+//Alters a table so that you delete (drop) the column with that name
+
+https://www.guru99.com/delete-and-update.html
+DELETE FROM table_name WHERE {___ = ___ (the constraint) };
+
+//Deletes specific rows inside your table
+
+
+

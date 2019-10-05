@@ -1,7 +1,17 @@
 "use strict";
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const mysql = require("mysql");
+//No need for mySQL anymore
+//const mysql = require("mysql");
+
+const { Client } = require("pg");
+
+const con = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+});
+
+con.connect();
 
 bot.commands = new Discord.Collection();
 
@@ -15,18 +25,29 @@ const token = process.env.token;
 
 bot.login(token);
 
-var con = mysql.createConnection({
+//mySQL code that can be commented out
+/*var con = mysql.createConnection({
     host: "localhost",
+    //port: 3306,
     user: "root",
     password: process.env.sqlPass,
     database: "teaparty"
-});
+});*/
+
+//mySQL code that can be commented out
+/* con.connect(err => {
+    if (err) throw err;
+    console.log("Connected to Database");
+    con.query("SHOW TABLES", console.log);
+});*/
 
 con.connect(err => {
     if (err) throw err;
     console.log("Connected to Database");
     con.query("SHOW TABLES", console.log);
 });
+
+
 
 /*
 Starts with the Bot Ready protocol

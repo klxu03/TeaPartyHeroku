@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/51815542/heroku-missing-required-flag-a
+
+When you get an error:
+ »   Error: Missing required flag:
+ »     -a, --app APP  app to run command against
+ »   See more help with --help
+
+Go ahead and just tick on --app _____ (bot name, so for me it'll be tea-party-discord-bot) on the end of the command and it'll work.
+

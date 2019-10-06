@@ -97,7 +97,7 @@ bot.on("message", (message) => {
         console.log("This is what rows display\n");
         console.log(rows);
         //If the user doesn't exist
-        if (true) {
+        if (rows.length < 1) {
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);

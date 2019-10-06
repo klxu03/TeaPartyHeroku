@@ -13,7 +13,7 @@ module.exports = class info {
     async run(bot, msg, args, con) {
         let target = msg.author;
         
-        con.query(`SELECT * FROM xp WHERE id = '${target.id}'`, (err, rows) => {
+        con.query(`SELECT * FROM xp WHERE discordid = '${target.id}'`, (err, rows) => {
             if (err) throw err;
 
             if (!rows[0]) {

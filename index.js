@@ -99,22 +99,22 @@ bot.on("message", (message) => {
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);
-            sql = `INSERT INTO xp (id, name, exp, level) VALUES ('${message.author.id}', "" + "${name}", ${generateXP()}, 1)`
+            sql = `INSERT INTO xp (discordid, name, exp, level) VALUES ('${message.author.id}', "" + "${name}", ${generateXP()}, 1)`
             console.log("Generating new user");
         } else {
             var exp = rows[0].exp + generateXP(); 
             //Add on XP by updating the value there
             let level = rows[0].level;
             if (exp > amountXPToLevelUp) {
-                sql =  `update xp set level = ${level + 1} where id = "${message.author.id}"`;
+                sql =  `update xp set level = ${level + 1} where discordid = "${message.author.id}"`;
                 condition = true;
             } else {
-                sql = `UPDATE xp SET exp = ${exp} WHERE id = '${message.author.id}'`;
+                sql = `UPDATE xp SET exp = ${exp} WHERE discordid = '${message.author.id}'`;
             }
         }
 
         con.query(sql);
-        if (condition) con.query(`update xp set exp = ${exp - amountXPToLevelUp} where id = "${message.author.id}"`);
+        if (condition) con.query(`update xp set exp = ${exp - amountXPToLevelUp} where discordid = "${message.author.id}"`);
     })
 
     if(!cmd) return;

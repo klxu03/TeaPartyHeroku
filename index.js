@@ -102,10 +102,10 @@ bot.on("message", (message) => {
             sql = `INSERT INTO xp (discordid, name, exp, level) VALUES ('${message.author.id}', "" + "${name}", ${generateXP()}, 1)`
             console.log("Generating new user");
         } else {
-            var exp = rows[0].exp + generateXP(); 
+            var exp2 = rows[0].exp + generateXP(); 
             //Add on XP by updating the value there
             let level = rows[0].level;
-            if (exp > amountXPToLevelUp) {
+            if (exp2 > amountXPToLevelUp) {
                 sql =  `update xp set level = ${level + 1} where discordid = "${message.author.id}"`;
                 condition = true;
             } else {

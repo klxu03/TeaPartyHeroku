@@ -89,7 +89,7 @@ bot.on("message", (message) => {
     var amountXPToLevelUp = 5 * 20;
      
     //* basically means all
-    con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
+    con.query(`SELECT * FROM xp WHERE discordid = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
 
         let sql;

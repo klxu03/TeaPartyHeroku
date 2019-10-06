@@ -105,6 +105,7 @@ bot.on("message", (message) => {
                 VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
             console.log("Generating new user");
         } else {
+            console.log("We are found inside the else statement");
             var exp = rows[0].exp + generateXP(); 
             //Add on XP by updating the value there
             let level = rows[0].level;

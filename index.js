@@ -105,9 +105,9 @@ bot.on("message", (message) => {
                 VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
             console.log("Generating new user");
         } else {
-            var exp = rows[3] + generateXP(); 
+            var exp = rows.exp + generateXP(); 
             //Add on XP by updating the value there
-            let level = rows[4];
+            let level = rows.level;
             if (exp > amountXPToLevelUp) {
                 sql =  `update users set level = ${level + 1} where discordid = "${message.author.id}"`;
                 condition = true;

@@ -89,32 +89,35 @@ bot.on("message", (message) => {
     var amountXPToLevelUp = 5 * 20;
      
     //* basically means all
-    con.query(`SELECT * FROM xp WHERE discordid = '${message.author.id}'`, (err, rows) => {
+    con.query(`SELECT * FROM users WHERE discordid = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
 
         let sql;
 
+        console.log("This is what rows display\n");
+        console.log(rows);
         //If the user doesn't exist
-        if (true) {
+        if (rows.length < 1) {
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);
-            sql = `INSERT INTO xp (discordid, name, exp, level) VALUES ('${message.author.id}', '' + '${name}', ${generateXP()}, 1)`
+            sql = `INSERT INTO users (discordid, name, exp, level) 
+                VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
             console.log("Generating new user");
         } else {
-            var exp = rows[0].exp + generateXP(); 
+            var exp = rows.exp + generateXP(); 
             //Add on XP by updating the value there
-            let level = rows[0].level;
+            let level = rows.level;
             if (exp > amountXPToLevelUp) {
-                sql =  `update xp set level = ${level + 1} where discordid = "${message.author.id}"`;
+                sql =  `update users set level = ${level + 1} where discordid = "${message.author.id}"`;
                 condition = true;
             } else {
-                sql = `UPDATE xp SET exp = ${exp} WHERE discordid = '${message.author.id}'`;
+                sql = `UPDATE users SET exp = ${exp} WHERE discordid = '${message.author.id}'`;
             }
         }
 
         con.query(sql);
-        if (condition) con.query(`update xp set exp = ${exp - amountXPToLevelUp} where discordid = "${message.author.id}"`);
+        if (condition) con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);
     })
 
     if(!cmd) return;

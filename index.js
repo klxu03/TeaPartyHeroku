@@ -99,7 +99,7 @@ bot.on("message", (message) => {
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);
-            sql = `INSERT INTO xp (discordid, name, exp, level) VALUES ('${message.author.id}', "" + "${name}", ${generateXP()}, 1)`
+            sql = `INSERT INTO xp (discordid, name, exp, level) VALUES ('${message.author.id}', '' + '${name}', ${generateXP()}, 1)`
             console.log("Generating new user");
         } else {
             var exp = rows[0].exp + generateXP(); 

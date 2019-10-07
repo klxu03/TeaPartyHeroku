@@ -113,7 +113,7 @@ bot.on("message", (message) => {
             let level = rows[0].level;
             console.log("2");
             if (exp > amountXPToLevelUp) {
-                sql =  `update users set level = ${level + 1} where discordid = "${message.author.id}"`;
+                sql =  `update users set level = ${level + 1} where discordid = '${message.author.id}'`;
                 condition = true;
                 console.log("if statement was triggered");
             } else {

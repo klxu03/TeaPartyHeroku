@@ -13,8 +13,9 @@ module.exports = class info {
     async run(bot, msg, args, con) {
         let target = msg.author;
         
-        con.query(`SELECT * FROM xp WHERE discordid = '${target.id}'`, (err, rows) => {
+        con.query(`SELECT * FROM users WHERE discordid = '${target.id}'`, (err, rows) => {
             if (err) throw err;
+            rows = rows['rows'];
 
             if (!rows[0]) {
                 return msg.channel.send("This user does not have any XP");

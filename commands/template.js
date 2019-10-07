@@ -12,5 +12,9 @@ module.exports = class template {
 
     async run(bot, message, args, con) {
         //Insert Your Code
+        con.query(`SELECT * FROM users WHERE discordid = '${target.id}'`, (err, rows) => {
+            if (err) throw err;
+            rows = rows['rows'];
+        }
     }
 }

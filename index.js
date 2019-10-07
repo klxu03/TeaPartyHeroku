@@ -92,6 +92,7 @@ bot.on("message", (message) => {
     con.query(`SELECT * FROM users WHERE discordid = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
 
+        rows = rows['rows'];
         let sql;
 
         console.log("This is what rows display\n");

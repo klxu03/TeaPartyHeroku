@@ -11,7 +11,7 @@ module.exports = class info {
     }
 
     async run(bot, msg, args, con) {
-        let target = msg.author;
+        let target = msg.mentions.members.first() || msg.author;
         
         con.query(`SELECT * FROM users WHERE discordid = '${target.id}'`, (err, rows) => {
             if (err) throw err;

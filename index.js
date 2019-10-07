@@ -42,7 +42,7 @@ bot.login(token);
 con.connect(err => {
     if (err) throw err;
     console.log("Connected to Database");
-    con.query("SHOW TABLES", console.log);
+    //con.query("SHOW TABLES", console.log);
 });
 
 
@@ -79,7 +79,8 @@ function generateXP() {
 
 bot.on("message", (message) => {
     if (message.channel.type === 'dm') return;
-    if (message.author.type === 'bot') return;
+    //if (message.author.type === 'bot') return;
+    if (message.author.bot) return;
     
     let args = message.content.split(" ");
     let command = args[0];

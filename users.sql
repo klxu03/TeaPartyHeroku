@@ -1,4 +1,4 @@
-CREATE TABLE xp (
+CREATE TABLE users (
     id SERIAL,
     discordid VARCHAR(20) NOT NULL,
     name VARCHAR(35) NOT NULL,

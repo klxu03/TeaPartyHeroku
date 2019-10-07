@@ -78,13 +78,14 @@ function generateXP() {
 }
 
 bot.on("message", (message) => {
-    if(message.channel.type === 'dm') return;
-    if(message.author.type === 'bot') return;
+    if (message.channel.type === 'dm') return;
+    if (message.author.type === 'bot') return;
     
     let args = message.content.split(" ");
     let command = args[0];
     let cmd = CH.getCommand(command);
     var condition = false;
+    var condition = createNewUser = false;
     //The "* 20" means the exp per message, since on average someone will get 20 exp per message
     var amountXPToLevelUp = 5 * 20;
      
@@ -102,8 +103,18 @@ bot.on("message", (message) => {
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);
-            sql = `INSERT INTO users (discordid, name, exp, level) 
-                VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
+            let discordid = '' + message.author.id;
+            con.query("INSERT INTO users (discordid, name, exp, level) VALUES (:discordID, :discordName, 0, 1)",
+            {
+                discordID: discordid,
+                discordName: name
+            },
+            (err) => {
+                if (err) throw err;
+            });
+            // sql = `INSERT INTO users (discordid, name, exp, level) 
+            //     VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
+            createNewUser = true;
             console.log("Generating new user");
         } else {
             console.log("We are found inside the else statement");
@@ -124,9 +135,11 @@ bot.on("message", (message) => {
         }
 
         console.log("4");
-        con.query(sql, (err) => {
-            if (err) throw err;
-        });
+        if (!createNewUser) {
+            con.query(sql, (err) => {
+                if (err) throw err;
+            });
+        }
         console.log("5");
         if (condition) {
             con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);

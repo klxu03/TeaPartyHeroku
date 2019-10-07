@@ -108,18 +108,26 @@ bot.on("message", (message) => {
         } else {
             console.log("We are found inside the else statement");
             var exp = rows[0].exp + generateXP(); 
+            console.log("1");
             //Add on XP by updating the value there
             let level = rows[0].level;
+            console.log("2");
             if (exp > amountXPToLevelUp) {
                 sql =  `update users set level = ${level + 1} where discordid = "${message.author.id}"`;
                 condition = true;
+                console.log("if statement was triggered");
             } else {
                 sql = `UPDATE users SET exp = ${exp} WHERE discordid = '${message.author.id}'`;
+                console.log("else was triggered");
             }
+            console.log("3");
         }
 
+        console.log("4");
         con.query(sql);
+        console.log("5");
         if (condition) con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);
+        console.log("6");
     })
 
     if(!cmd) return;

@@ -85,7 +85,7 @@ bot.on("message", (message) => {
     let command = args[0];
     let cmd = CH.getCommand(command);
     var condition = false;
-    var condition = createNewUser = false;
+    var createNewUser = false;
     //The "* 20" means the exp per message, since on average someone will get 20 exp per message
     var amountXPToLevelUp = 5 * 20;
      

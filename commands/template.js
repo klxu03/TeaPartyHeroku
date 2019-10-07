@@ -15,6 +15,6 @@ module.exports = class template {
         con.query(`SELECT * FROM users WHERE discordid = '${target.id}'`, (err, rows) => {
             if (err) throw err;
             rows = rows['rows'];
-        }
+        })
     }
 }

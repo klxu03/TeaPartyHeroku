@@ -124,9 +124,13 @@ bot.on("message", (message) => {
         }
 
         console.log("4");
-        con.query(sql);
+        con.query(sql, (err) => {
+            if (err) throw err;
+        });
         console.log("5");
-        if (condition) con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);
+        if (condition) {
+            con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);
+        }
         console.log("6");
     })
 

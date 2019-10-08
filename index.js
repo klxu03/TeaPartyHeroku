@@ -93,11 +93,14 @@ bot.on("message", (message) => {
     //* basically means all
     con.query(`SELECT * FROM users WHERE discordid = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
+        console.log("No error was found in the connection");
 
         let sql;
 
+        console.log("rows.length is " + rows.length);
         //If the user doesn't exist
         if (rows.length < 1) {
+            console.log("Creating new user");
             let name = message.member.user.tag;
             name = name.split("#")[0];
             console.log("name is " + name);

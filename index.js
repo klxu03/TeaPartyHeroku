@@ -147,6 +147,7 @@ bot.on("message", (message) => {
             });
         }
         console.log("5");
+        console.log("condition is " + condition);
         if (condition) {
             con.query(`update users set exp = ${exp - amountXPToLevelUp} where discordid = '${message.author.id}'`);
         }
@@ -156,11 +157,11 @@ bot.on("message", (message) => {
     console.log("cmd is " + cmd);
     if(cmd == undefined) return;
     console.log("The message is a command");
-    try {
-        cmd.run(bot, message, args, con)
-    } catch(error){
-        console.log("An error has been caught in the command");
-        console.log(error)
-    }
+    // try {
+    //     cmd.run(bot, message, args, con)
+    // } catch(error){
+    //     console.log("An error has been caught in the command");
+    //     console.log(error)
+    // }
 
 });

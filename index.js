@@ -154,14 +154,13 @@ bot.on("message", (message) => {
         console.log("6");
     })
 
-    console.log("cmd is " + cmd);
     if(cmd == undefined) return;
     console.log("The message is a command");
-    // try {
-    //     cmd.run(bot, message, args, con)
-    // } catch(error){
-    //     console.log("An error has been caught in the command");
-    //     console.log(error)
-    // }
+    try {
+        cmd.run(bot, message, args, con)
+    } catch(error){
+        console.log("An error has been caught in the command");
+        console.log(error)
+    }
 
 });

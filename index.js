@@ -109,11 +109,11 @@ bot.on("message", (message) => {
             {
                 discordID: discordid,
                 discordName: name
+            },
+            (err) => {
+                if (err) throw err;
             });
-            // ,
-            // (err) => {
-            //     if (err) throw err;
-            // });
+
             // sql = `INSERT INTO users (discordid, name, exp, level) 
             //     VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
             createNewUser = true;
@@ -153,6 +153,7 @@ bot.on("message", (message) => {
     })
 
     if(!cmd) return;
+    console.log("The message is a command");
     try {
         cmd.run(bot, message, args, con)
     } catch(error){

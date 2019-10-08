@@ -109,10 +109,11 @@ bot.on("message", (message) => {
             {
                 discordID: discordid,
                 discordName: name
-            },
-            (err) => {
-                if (err) throw err;
             });
+            // ,
+            // (err) => {
+            //     if (err) throw err;
+            // });
 
             // sql = `INSERT INTO users (discordid, name, exp, level) 
             //     VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
@@ -157,6 +158,7 @@ bot.on("message", (message) => {
     try {
         cmd.run(bot, message, args, con)
     } catch(error){
+        console.log("An error has been caught in the command");
         console.log(error)
     }
 

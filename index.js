@@ -121,8 +121,8 @@ bot.on("message", (message) => {
             console.log("Generating new user");
         } else {
             console.log("This is what rows display\n");
-            console.log(rows);
             rows = rows['rows'];
+            console.log(rows);
             console.log("We are found inside the else statement");
             var exp = rows[0].exp + generateXP(); 
             console.log("1");

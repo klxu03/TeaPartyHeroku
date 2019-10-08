@@ -11,7 +11,7 @@ module.exports = class inzult {
 
     async run(bot, msg, args) {
         console.log("Inzult");
-        msg.channel.send("You need some sleep" + msg.mentions.members.first() || msg.author);
+        msg.channel.send("You need some sleep " + (msg.mentions.members.first() || msg.author));
     }
 }
 

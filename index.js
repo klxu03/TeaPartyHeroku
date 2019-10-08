@@ -42,7 +42,7 @@ bot.login(token);
 con.connect(err => {
     if (err) throw err;
     console.log("Connected to Database");
-    //con.query("SHOW TABLES", console.log);
+    con.query("SHOW TABLES", console.log);
 });
 
 
@@ -94,11 +94,8 @@ bot.on("message", (message) => {
     con.query(`SELECT * FROM users WHERE discordid = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
 
-        rows = rows['rows'];
         let sql;
 
-        console.log("This is what rows display\n");
-        console.log(rows);
         //If the user doesn't exist
         if (rows.length < 1) {
             let name = message.member.user.tag;
@@ -118,6 +115,9 @@ bot.on("message", (message) => {
             createNewUser = true;
             console.log("Generating new user");
         } else {
+            console.log("This is what rows display\n");
+            console.log(rows);
+            rows = rows['rows'];
             console.log("We are found inside the else statement");
             var exp = rows[0].exp + generateXP(); 
             console.log("1");

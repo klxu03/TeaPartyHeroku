@@ -153,7 +153,8 @@ bot.on("message", (message) => {
         console.log("6");
     })
 
-    if(!cmd) return;
+    console.log("cmd is " + cmd);
+    if(cmd == undefined) return;
     console.log("The message is a command");
     try {
         cmd.run(bot, message, args, con)

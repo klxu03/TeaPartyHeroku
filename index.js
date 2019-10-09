@@ -96,6 +96,9 @@ bot.on("message", (message) => {
         console.log("No error was found in the connection");
 
         let sql;
+        console.log("This is what rows display\n");
+        rows = rows['rows'];
+        console.log(rows);
 
         console.log("rows.length is " + rows.length);
         //If the user doesn't exist
@@ -122,9 +125,6 @@ bot.on("message", (message) => {
             createNewUser = true;
             console.log("Generating new user");
         } else {
-            console.log("This is what rows display\n");
-            rows = rows['rows'];
-            console.log(rows);
             console.log("We are found inside the else statement");
             var exp = rows[0].exp + generateXP(); 
             console.log("1");

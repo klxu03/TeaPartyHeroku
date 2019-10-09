@@ -105,15 +105,17 @@ bot.on("message", (message) => {
             name = name.split("#")[0];
             console.log("name is " + name);
             let discordid = '' + message.author.id;
-            con.query("INSERT INTO users (discordid, name, exp, level) VALUES (:discordID, :discordName, 0, 1)",
-            {
-                discordID: discordid,
-                discordName: name
-            });
-            // ,
-            // (err) => {
-            //     if (err) throw err;
+            // con.query("INSERT INTO users (discordid, name, exp, level) VALUES (:discordID, :discordName, 0, 1)",
+            // {
+            //     discordID: discordid,
+            //     discordName: name
             // });
+            con.query('INSERT INTO users (discordid, name, exp, level) VALUES ($1, $2, 0, 1)', 
+            [discordid, 
+            name], 
+            (err, results) => {
+                if (err) throw err;
+            });
 
             // sql = `INSERT INTO users (discordid, name, exp, level) 
             //     VALUES ('${message.author.id}', '${name}', ${generateXP()}, 1)`;
@@ -154,7 +156,7 @@ bot.on("message", (message) => {
         console.log("6");
     })
 
-    if(cmd == undefined) return;
+    if(!cmd) return;
     console.log("The message is a command");
     try {
         cmd.run(bot, message, args, con)

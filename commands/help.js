@@ -10,7 +10,7 @@ module.exports = class help {
         this.usage = '!help'
     }
 
-    async run(bot, message, args, con) {
+    async run(bot, msg, args, con) {
         let embed = new Discord.RichEmbed()
         .setAuthor('Help Page')
         .addBlankField()

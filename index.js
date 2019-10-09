@@ -102,7 +102,7 @@ bot.on("message", (message) => {
 
         console.log("rows.length is " + rows.length);
         //If the user doesn't exist
-        if (rows.length == undefined) {
+        if (rows.length > 0) {
             console.log("Creating new user");
             let name = message.member.user.tag;
             name = name.split("#")[0];

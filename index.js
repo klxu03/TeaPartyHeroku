@@ -65,7 +65,7 @@ bot.on('ready', () => {
 		})
 		// general channel id: 609037015635460098
 		let generalChannel = bot.channels.get("609037015635460098");
-        generalChannel.send("Bot Updated");
+        generalChannel.send(":on: Bot Is On!");
 	})
 });
 
@@ -134,6 +134,7 @@ bot.on("message", (message) => {
             if (exp > amountXPToLevelUp) {
                 sql =  `update users set level = ${level + 1} where discordid = '${message.author.id}'`;
                 condition = true;
+                message.channel.send(":up: Congratulations " + message.author + " on Leveling Up To " + (level + 1) + "!")
                 console.log("if statement was triggered");
             } else {
                 sql = `UPDATE users SET exp = ${exp} WHERE discordid = '${message.author.id}'`;

@@ -88,7 +88,7 @@ bot.on("message", (message) => {
     var condition = false;
     var createNewUser = false;
     //The "* 20" means the exp per message, since on average someone will get 20 exp per message
-    var amountXPToLevelUp = 5 * 20;
+    var amountXPToLevelUp = 1000 * 20;
      
     //* basically means all
     con.query(`SELECT * FROM users WHERE discordid = '${message.author.id}'`, (err, rows) => {
@@ -97,6 +97,7 @@ bot.on("message", (message) => {
 
         let sql;
         console.log("This is what rows display\n");
+        //Fixes issues regarding accessing "rows"
         rows = rows['rows'];
         console.log(rows);
 
@@ -131,7 +132,12 @@ bot.on("message", (message) => {
             //Add on XP by updating the value there
             let level = rows[0].level;
             console.log("2");
-            if (exp > amountXPToLevelUp) {
+            
+            //Sets a maximum multiplier to 20 since 20 * 1000 messages is 20,000 messages, a plenty enough max for a level up
+            let multiplier = 20;
+            if (level < 20) multiplier = level; 
+
+            if (exp > (amountXPToLevelUp * multiplier)) {
                 sql =  `update users set level = ${level + 1} where discordid = '${message.author.id}'`;
                 condition = true;
                 message.channel.send(":up: Congratulations " + message.author + " on Leveling Up To " + (level + 1) + "!")
